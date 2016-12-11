@@ -7,14 +7,20 @@ const func = (obj, cb) => {
 		throw new Error(`Expected an object but got ${ typeof obj }`);
 	}
 
-	obj = _.mapKeys(obj, cb);
+	let res;
 
-	const res = {};
+	if (_.isArray(obj)) {
+		res = [];
+	} else {
+		obj = _.mapKeys(obj, cb);
+		res = {};
+	}
 
 	for (const key in obj) {
 		if ({}.hasOwnProperty.call(obj, key)) {
 			const val = obj[key];
-			if (_.isObject(val)) {
+
+			if (_.isPlainObject(val) || _.isArray(val)) {
 				res[key] = func(val, cb);
 			} else {
 				res[key] = val;

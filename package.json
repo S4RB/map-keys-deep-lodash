@@ -1,5 +1,5 @@
 {
-  "name": "map-keys-deep-lodash",
+  "name": "@s4rb/map-keys-deep-lodash",
   "description": "Map/rename keys recursively with lodash as only dependency.",
   "version": "0.2.0",
   "homepage": "https://github.com/odynvolk/map-keys-deep-lodash",

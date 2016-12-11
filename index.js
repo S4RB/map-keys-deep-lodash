@@ -1,26 +1,28 @@
 'use strict';
 
-const _ = require("lodash");
+const _ = require('lodash');
 
-module.exports = function mapKeysDeepLodash(obj, cb) {
-  if (_.isUndefined(obj)) {
-    throw new Error(`map-keys-deep-lodash expects an object but got ${typeof obj}`);
-  }
+const func = (obj, cb) => {
+	if (_.isUndefined(obj)) {
+		throw new Error(`Expected an object but got ${ typeof obj }`);
+	}
 
-  obj = _.mapKeys(obj, cb);
+	obj = _.mapKeys(obj, cb);
 
-  const res = {};
+	const res = {};
 
-  for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      const val = obj[key];
-      if (_.isObject(val)) {
-        res[key] = mapKeysDeepLodash(val, cb);
-      } else {
-        res[key] = val;
-      }
-    }
-  }
+	for (const key in obj) {
+		if ({}.hasOwnProperty.call(obj, key)) {
+			const val = obj[key];
+			if (_.isObject(val)) {
+				res[key] = func(val, cb);
+			} else {
+				res[key] = val;
+			}
+		}
+	}
 
-  return res;
+	return res;
 };
+
+module.exports = func;

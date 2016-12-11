@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "should": "^8.3.1"
+    "should": "^11.1.2"
   },
   "keywords": [
     "deep",

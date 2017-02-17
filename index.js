@@ -7,7 +7,7 @@ var func = function (obj, cb) {
 		throw new Error('Expected an object but got ' + (typeof obj));
 	}
 
-	let res;
+	var res;
 
 	if (_.isArray(obj)) {
 		res = [];

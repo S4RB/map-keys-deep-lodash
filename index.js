@@ -1,10 +1,10 @@
 'use strict';
 
-const _ = require('lodash');
+var _ = require('lodash');
 
-const func = (obj, cb) => {
+var func = function (obj, cb) {
 	if (_.isUndefined(obj)) {
-		throw new Error(`Expected an object but got ${ typeof obj }`);
+		throw new Error('Expected an object but got ' + (typeof obj));
 	}
 
 	let res;
@@ -16,9 +16,9 @@ const func = (obj, cb) => {
 		res = {};
 	}
 
-	for (const key in obj) {
+	for (var key in obj) {
 		if ({}.hasOwnProperty.call(obj, key)) {
-			const val = obj[key];
+			var val = obj[key];
 
 			if (_.isPlainObject(val) || _.isArray(val)) {
 				res[key] = func(val, cb);
